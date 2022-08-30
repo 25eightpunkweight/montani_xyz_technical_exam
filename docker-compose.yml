@@ -1,0 +1,27 @@
+version: '3.8'
+services:
+  db:
+    image: postgres
+    env_file: ./.env
+  sinatra-api:
+    build: ./sinatra_api
+    command: bash -c "rm -f tmp/pids/server.pid && bundle exec puma"
+    volumes:
+      - .:/sinatra-api
+    ports:
+      - "9292:9292"
+    depends_on:
+      - db
+    env_file: ./sinatra_api/.env
+  react-app:
+    build: ./react_app
+    command: bash -c "npm start"
+    volumes:
+      - .:/react-app
+    ports:
+      - "1337:1337"
+    depends_on:
+      - sinatra-api
+    env_file: ./react_app/.env
+volumes:
+  postgres:

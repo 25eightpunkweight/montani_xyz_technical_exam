@@ -9,7 +9,7 @@ default: &default
 development:
   primary:
     <<: *default
-    database: boilerplate_dev_db_CHANGEME
+    database: boilerplate_dev_db_xyz
 
 # test:
 #   primary:

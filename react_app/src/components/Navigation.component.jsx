@@ -9,7 +9,7 @@ import Button from "react-bootstrap/Button";
 import Dropdown from "react-bootstrap/Dropdown";
 import { Row } from 'react-bootstrap';
 
-// import Styled from './.styled'
+import Styled from './stylesheet.styled'
 
 function Navigation() {
   return (
@@ -43,9 +43,9 @@ function Navigation() {
         </Navbar.Collapse>
         <Navbar.Collapse style={{justifyContent: 'space-around'}}>
           <Dropdown>
-            <Dropdown.Toggle variant="success" id="dropdown-basic">
-              EN
-            </Dropdown.Toggle>
+            <Styled.ClearDropdownButton variant="success" id="dropdown-basic">
+              &#127760; EN
+            </Styled.ClearDropdownButton>
 
             <Dropdown.Menu>
               <Dropdown.Item href="#/action-1">EN</Dropdown.Item>

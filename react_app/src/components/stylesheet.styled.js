@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import BannerImage from '../assets/xyz_assets/Assets/MaskGroup4.png';
 import BannerBg from '../assets/xyz_assets/Assets/banner_bg.png';
 import ChatIcon from '../assets/xyz_assets/Assets/Path-335.svg';
-import { Alert, Container, Card, Row, Accordion } from 'react-bootstrap';
+import { Alert, Container, Card, Row, Accordion, Dropdown } from 'react-bootstrap';
 import logoFacebook from '../assets/xyz_assets/Assets/logo-facebook.svg';
 import logoTwitter from '../assets/xyz_assets/Assets/logo-twitter.svg';
 import logoLinkedIn from '../assets/xyz_assets/Assets/logo-linkedin.svg';
@@ -127,6 +127,14 @@ const SocialsLink = styled.div`
     border-radius: 25px;
 `
 
+const ClearDropdownButton = styled(Dropdown.Toggle)`
+    border: none;
+    background-color: rgba(1, 2, 3, 0) !important;
+    color: grey;
+    --bs-btn-hover-color: black;
+    --bs-btn-active-color: grey;
+`
+
 const Styled = { 
     ComponentStyle,
     BannerMessage,
@@ -142,6 +150,7 @@ const Styled = {
     SocialsLink,
     SectionRow,
     BusinessPitchCardImg,
+    ClearDropdownButton,
     // below are in-line styles
     rowSectionSubStyle,
     columnCenteredText,

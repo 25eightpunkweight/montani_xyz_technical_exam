@@ -29,7 +29,7 @@ function BoilerPlate() {
             {/* Menu list Dropdown*/}
             <Col md={2}>
               <ListGroup>
-                <ListGroup.Item><h3>Menu</h3></ListGroup.Item>
+                <ListGroup.Item><h5>Menu</h5></ListGroup.Item>
                 <ListGroup.Item>Shop All</ListGroup.Item>
                 <ListGroup.Item>About Us</ListGroup.Item>
                 <ListGroup.Item>Community</ListGroup.Item>
@@ -39,7 +39,7 @@ function BoilerPlate() {
             {/* Support list Dropdown*/}
             <Col md={2}>
               <ListGroup>
-                <ListGroup.Item><h3>Support</h3></ListGroup.Item>
+                <ListGroup.Item><h5>Support</h5></ListGroup.Item>
                 <ListGroup.Item>Shipping & Returns</ListGroup.Item>
                 <ListGroup.Item>Help & FAQ</ListGroup.Item>
                 <ListGroup.Item>Terms and Conditions</ListGroup.Item>
@@ -50,7 +50,7 @@ function BoilerPlate() {
             {/* Resources list Dropdown */}
             <Col md={2}>
               <ListGroup>
-                <ListGroup.Item><h3>Resources</h3></ListGroup.Item>
+                <ListGroup.Item><h5>Resources</h5></ListGroup.Item>
                 <ListGroup.Item>Shipping & Returns</ListGroup.Item>
                 <ListGroup.Item>Help & FAQ</ListGroup.Item>
                 <ListGroup.Item>Terms and Conditions</ListGroup.Item>

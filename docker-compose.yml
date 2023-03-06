@@ -15,7 +15,8 @@ services:
     env_file: ./sinatra_api/.env
   react-app:
     build: ./react_app
-    command: bash -c "npm start"
+    # command: bash -c "npm install && npm start"
+    command: bash -c "sleep 2"
     volumes:
       - .:/react-app
     ports:

@@ -1,5 +1,5 @@
 ---
-pid: 1
-control_url: unix:///tmp/puma-status-1661843407212-1
-control_auth_token: d5e8ca198cf8faa24f35764fe3ddefcf
-running_from: "/app"
+pid: 66885
+control_url: unix:///tmp/puma-status-1678160147781-66885
+control_auth_token: 2784a60e53df6f5029fbcc13c256280e
+running_from: "/home/dvl/repos/montani_xyz_technical_exam/sinatra_api"

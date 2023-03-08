@@ -1,11 +1,24 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Col, Container, Form, Row, InputGroup, ListGroup } from 'react-bootstrap';
 import xyzLogo from "../assets/xyz_assets/Assets/sample logo.svg"
+import axios from "axios";
 
 import Styled from './stylesheet.styled'
 
 function BoilerPlate() {
   const socials = ['facebook', 'linkedin', 'twitter'];
+
+  const [omg, setData] = useState([]);
+
+  const getData = async () => {
+    const resp = await axios.get('/hello');
+    console.log(resp);
+    setData(resp);
+  }
+
+  useEffect(()=>{
+    getData();
+  }, []) 
 
   return (
     <Styled.FooterContainer>

@@ -5,11 +5,11 @@ services:
     env_file: ./.env
   sinatra-api:
     build: ./sinatra_api
-    command: bash -c "rm -f tmp/pids/server.pid && bundle exec puma"
+    command: bash -c "rm -f tmp/pids/server.pid && RACK_ENV=development bundle exec puma"
     volumes:
       - .:/sinatra-api
     ports:
-      - "9292:9292"
+      - "55755:55755"
     depends_on:
       - db
     env_file: ./sinatra_api/.env

@@ -6,8 +6,14 @@ require "sinatra/activerecord"
 require "sinatra/reloader"
 require "config"
 require "awesome_print"
+require "pry"
 
 class App < Sinatra::Base
+  set :bind, '0.0.0.0'
+
+  configure do 
+    enable :cross_origin
+  end
 
   # Register Sinatra Flash
   # register Sinatra::Flash
@@ -81,34 +87,54 @@ class App < Sinatra::Base
     # end
   end
 
+  before do
+    response.headers['Access-Control-Allow-Origin'] = 'http://localhost:1337'
+  end
+
   # Log error and redirect
   error do
     logger.error env['sinatra.error'].message # log this to the output
-    redirect to('500.html')
+    # redirect to('500.html')
   end
 
   # Redirect to static 404 page
   not_found do
-      redirect to('404.html')
+      {error: 'not found'}
+  end
+
+  options "*" do
+    response.headers["Allow"] = "GET, PUT, POST, DELETE, OPTIONS"
+    response.headers["Access-Control-Allow-Headers"] = "Authorization, Content-Type, Accept, X-User-Email, X-Auth-Token"
+    response.headers["Access-Control-Allow-Origin"] = "*"
+    200
+  end
+
+  after do
+    response.body = JSON.dump(response.body)
   end
 end
 
 # Load up all initializers first (NB)
-Dir[File.dirname(__FILE__) + "config/initializers/*.rb"].each do |file|
+Dir[File.dirname(__FILE__) + "/config/initializers/*.rb"].each do |file|
   require file
 end
 
 # Load up all helpers second (NB)
-Dir[File.dirname(__FILE__) + "lib/helpers/*.rb"].each do |file|
+Dir[File.dirname(__FILE__) + "/lib/helpers/*.rb"].each do |file|
   require file
 end
 
 # Load up all models next
-Dir[File.dirname(__FILE__) + "lib/models/*.rb"].each do |file|
+Dir[File.dirname(__FILE__) + "/lib/models/*.rb"].each do |file|
+  require file
+end
+
+# Load up all service objects next
+Dir[File.dirname(__FILE__) + "/lib/services/*.rb"].each do |file|
   require file
 end
 
 # Load up all controllers last
-Dir[File.dirname(__FILE__) + "lib/controllers/*.rb"].each do |file|
+Dir[File.dirname(__FILE__) + "/lib/controllers/*.rb"].each do |file|
   require file
 end

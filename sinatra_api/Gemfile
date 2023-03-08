@@ -5,6 +5,7 @@ gem "rack"
 gem "sinatra"
 gem "sinatra-activerecord"
 gem "sinatra-contrib"
+gem "sinatra-cross_origin"
 gem "builder" # nice to have
 gem "bson_ext" # no need unless I have to use mongodb?
 gem "logger"

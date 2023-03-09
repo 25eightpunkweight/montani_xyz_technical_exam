@@ -12,15 +12,16 @@ class App < Sinatra::Base
 
 	get '/book' do
 		isbn = params["isbn"]
-		if ISBNHelper.isValidISBN10?(isbn)
+		if ISBNHelper.isValidISBN13?(isbn)
+			query_string = isbn.gsub(/[^[[:alnum:]]]/, '')
+		elsif ISBNHelper.isValidISBN10?(isbn)
 			converted_isbn = ISBNHelper.convert(isbn)
 			query_string = converted_isbn.gsub(/[^[[:alnum:]]]/, '')
-			book = Book.where("regexp_replace(isbn_13, '[^A-Za-z0-9]', '', 'g') = '#{query_string}'")
-		elsif ISBNHelper.isValidISBN13?(isbn)
-			book = Book.find_by(isbn_13: isbn)
 		else
 			400
 		end
+
+		book = Book.where("regexp_replace(isbn_13, '[^A-Za-z0-9]', '', 'g') = '#{query_string}'").first
 
 		if book
 			{ book: JSON.parse( 

@@ -5,6 +5,12 @@ class Book < ActiveRecord::Base
     validates :price, presence: true
     validates :year_published, presence: true
 
+    # URL attribute validation. 
+    # I will just leave this here commented since we 
+    # don't have image URLs for each book at the database.
+    
+    # validates :url, format: { with: URI.regexp }, if: 'url.present?'
+
     belongs_to :publisher
     validates :publisher, presence: true
 

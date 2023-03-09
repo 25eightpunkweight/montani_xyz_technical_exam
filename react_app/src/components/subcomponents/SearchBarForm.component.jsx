@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import {Search} from 'react-bootstrap-icons';
 import { InputGroup } from 'react-bootstrap';
-import {isValidISBN13, isValidISBN10} from '../../helpers/ISBNHelpers';
+import {isValidISBN13, isValidISBN10, isbnConvert} from '../../helpers/ISBNHelpers';
 import { useHistory, useNavigate } from "react-router-dom";
 
 
@@ -19,14 +19,21 @@ function SearchBarForm() {
   const checkForValidISBN = (e) => {
     e.preventDefault();
     // 978-0-596-52068-7
+    let queryISBN = '';
     if ( !( isValidISBN10(searchISBN) || isValidISBN13(searchISBN) ) ){
       setErrorText("please enter a \n valid ISBN");
       return;
     }
 
+    if (isValidISBN10(searchISBN)){
+      queryISBN = isbnConvert(searchISBN);
+    }
+
+    
+
     setErrorText('');
 
-    navigate("/book/" + searchISBN);
+    navigate("/book/" + queryISBN);
   };
   
   return (

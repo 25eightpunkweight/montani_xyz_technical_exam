@@ -4,7 +4,7 @@
 
 Hello, this is my submission of the coding challenge for applying as a full-stack developer at Montani International Inc. . This repository comes with a docker-compose.yml to save the hassle of getting correct versions of ruby/node/postgresql. Before proceeding, please go over to the **Installation - Docker** under the **Sinatra Model-Controller API** section to build the containers.
 
-Once you have the containers built, please run the following command to seed the database before starting them up.
+Once you have the containers built and running, please run the following command to seed the database:
 
 ```
 docker exec montani_xyz_technical_exam-sinatra-api-1 bundle exec rake db:create db:migrate db:seed

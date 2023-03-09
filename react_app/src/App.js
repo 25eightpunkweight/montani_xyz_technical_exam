@@ -3,14 +3,9 @@ import './App.css';
 import { Container, Row } from 'react-bootstrap';
 import BannerMessage from './components/BannerMessage.component';
 import Navigation from './components/Navigation.component';
-import LandingContent from './components/LandingContent.component';
-import ProductPreview from './components/ProductPreview.component';
-import Styled from './components/stylesheet.styled';
-import BusinessPitch from './components/BusinessPitch.component';
-import Testimony from './components/Testimony.component';
-import FAQs from './components/FAQs.component';
 import Footer from './components/Footer.component';
 import Home from './pages/Home.page';
+import Book from './pages/Book.page';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 
@@ -31,6 +26,7 @@ function App() {
         </Row>
         <Routes>
           <Route path="/" element={<Home/>}/>
+          <Route path="/book/:isbn" element={<Book/>}/>
         </Routes>
         <Row>
           <Footer/>

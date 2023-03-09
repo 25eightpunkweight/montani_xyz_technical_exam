@@ -8,18 +8,6 @@ import Styled from './stylesheet.styled'
 function BoilerPlate() {
   const socials = ['facebook', 'linkedin', 'twitter'];
 
-  const [omg, setData] = useState([]);
-
-  const getData = async () => {
-    const resp = await axios.get('/hello');
-    console.log(resp);
-    setData(resp);
-  }
-
-  useEffect(()=>{
-    getData();
-  }, []) 
-
   return (
     <Styled.FooterContainer>
         <Styled.SectionRow align="left" style={Styled.rowSectionSubStyle}>

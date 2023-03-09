@@ -10,7 +10,6 @@ class ISBNHelper
 
     def self.isValidISBN13? (isbn)
         total = 0
-        # return unless isbn.start_with?('978-')
 
         isbn.split('-').join('').split('').each_with_index do |num, idx|
             total = total + (num.to_i * (1 + (idx % 2) + (idx % 2)))
@@ -21,7 +20,7 @@ class ISBNHelper
 
     def self.convert (isbn)
         total = 0
-        if self.class.isValidISBN10?(isbn)
+        if self.isValidISBN10?(isbn)
             isbn = "978-#{isbn[0...-2]}"
             isbn_array = isbn.split('-').join('').split('')
             
@@ -32,7 +31,7 @@ class ISBNHelper
             last_digit = 10 - (total % 10)
             
             return [isbn, last_digit].join('-')
-        elsif self.class.isValidISBN13?(isbn)
+        elsif self.isValidISBN13?(isbn)
             isbn = isbn[4...isbn.length-2]
             isbn_array = isbn.split('-').join('').split('')
 

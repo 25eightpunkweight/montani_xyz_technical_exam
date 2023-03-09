@@ -4,12 +4,16 @@ require "yaml"
 require "digest/md5"
 require "sinatra/activerecord"
 require "sinatra/reloader"
+require "sinatra/json"
 require "config"
 require "awesome_print"
 require "pry"
+require "json"
 
 class App < Sinatra::Base
   set :bind, '0.0.0.0'
+
+  helpers Sinatra::JSON
 
   configure do 
     enable :cross_origin
@@ -66,6 +70,7 @@ class App < Sinatra::Base
     set :dump_errors   , true
     set :logging       , true
     set :raise_errors  , true
+    set :default_content_type, 'application/json'
 
     # Load general configs from the file
     YAML.load_file(File.dirname(__FILE__)+'/config/development.yml').each do |k, v|
@@ -89,6 +94,11 @@ class App < Sinatra::Base
 
   before do
     response.headers['Access-Control-Allow-Origin'] = 'http://localhost:1337'
+    content_type :json
+  end
+
+  after do
+    response.body = JSON.dump(response.body)
   end
 
   # Log error and redirect
@@ -98,9 +108,9 @@ class App < Sinatra::Base
   end
 
   # Redirect to static 404 page
-  not_found do
-      {error: 'not found'}
-  end
+  # not_found do
+  #     {error: 'not found'}
+  # end
 
   options "*" do
     response.headers["Allow"] = "GET, PUT, POST, DELETE, OPTIONS"
@@ -109,9 +119,7 @@ class App < Sinatra::Base
     200
   end
 
-  after do
-    response.body = JSON.dump(response.body)
-  end
+
 end
 
 # Load up all initializers first (NB)

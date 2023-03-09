@@ -32,7 +32,7 @@
       "react-app/jest"
     ]
   },
-  "proxy": "http://127.0.0.1:55755",
+  "proxy": "http://sinatra-api:55755",
   "browserslist": {
     "production": [
       ">0.2%",

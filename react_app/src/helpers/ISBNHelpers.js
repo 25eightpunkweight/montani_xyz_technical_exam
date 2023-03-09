@@ -1,10 +1,21 @@
-export const isValidISBN13 = (isbn13Digit) => {
-    // if (!isbn13Digit.startsWith('978-')){ //get outta here already
-    //     return false;
-    // }
+const onlyNumbers = (array) => {
+    return array.every (
+        e => {
+            return /\d/g.test(e);
+        }
+    );
+}
 
+export const isValidISBN13 = (isbn13Digit) => {
     let total = 0;
-    isbn13Digit.split('-').join('').split('').forEach((num, idx)=>{
+
+    const isbnArray = isbn13Digit.split('-').join('').split('');
+
+    if (isbnArray.length !== 13 || !onlyNumbers(isbnArray)){
+        return false;
+    }
+
+    isbnArray.forEach((num, idx)=>{
         total = total + (num * (1+(idx%2)+(idx%2)));
     });
 
@@ -14,7 +25,13 @@ export const isValidISBN13 = (isbn13Digit) => {
 export const isValidISBN10 = (isbn10Digit) => {
     let total = 0;
 
-    isbn10Digit.split('-').join('').split('').forEach((num, idx)=>{
+    const isbnArray = isbn10Digit.split('-').join('').split('');
+
+    if (isbnArray.length !== 10 || !onlyNumbers(isbnArray)){
+        return false;
+    }
+
+    isbnArray.forEach((num, idx)=>{
         total = total + (num * (10 - idx));
     });
 

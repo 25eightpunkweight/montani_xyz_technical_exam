@@ -21,7 +21,7 @@ function Navigation() {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link href="#home">Home</Nav.Link>
+            <Nav.Link href="/">Home</Nav.Link>
             <Nav.Link href="#link">Rent Textbooks</Nav.Link>
             <Nav.Link href="#link">Buy Textbooks</Nav.Link>
             <Nav.Link href="#link">Sell Textbooks</Nav.Link>
@@ -38,8 +38,8 @@ function Navigation() {
             </NavDropdown> */}
           </Nav>
         </Navbar.Collapse>
-        <Navbar.Collapse style={{flexDirection: 'column'}}>
-          <SearchBarForm/>
+        <Navbar.Collapse style={{width: 'auto'}}>
+          <SearchBarForm />
         </Navbar.Collapse>
         <Navbar.Collapse style={{justifyContent: 'space-around'}}>
           <Dropdown>

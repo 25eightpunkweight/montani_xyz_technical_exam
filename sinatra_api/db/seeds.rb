@@ -39,6 +39,25 @@ authors = [
 ]
 Author.create(authors)
 
+# publishers
+
+publishers = [
+    {
+        name: 'Paste Magazine',
+    },
+    {
+        name: 'Publishers Weekly',
+    },
+    {
+        name: 'Graywolf Press',
+    },
+    {
+        name: 'McSweeney\'s',
+    }
+]
+
+Publisher.create(publishers)
+
 # books
 
 books = [
@@ -49,6 +68,7 @@ books = [
             Author.where(first_name: 'Hannah', middle_name: 'P.', last_name: 'Templer').take!,
             Author.where(first_name: 'Marguerite', middle_name: 'Z.', last_name: 'Duras').take!
         ],
+        publisher: Publisher.find_by(name: 'Paste Magazine'),
         isbn_13: '978-1-891830-85-3',
         year_published: '2004',
         edition: 'Book 2',
@@ -59,6 +79,7 @@ books = [
         authors: [
             Author.where(first_name: 'Kingsley', last_name: 'Amis').take!
         ],
+        publisher: Publisher.find_by(name: 'Publishers Weekly'),
         isbn_13: '978-1-60309-454-2',
         year_published: '2019',
         edition: 'Book 1',
@@ -69,6 +90,7 @@ books = [
         authors: [
             Author.where(first_name: 'Kingsley', last_name: 'Amis').take!
         ],
+        publisher: Publisher.find_by(name: 'Graywolf Press'),
         isbn_13: '978-1-60309-038-4',
         year_published: '1990',
         edition: '',
@@ -82,6 +104,7 @@ books = [
             Author.where(first_name: 'Camille', middle_name: 'Byron', last_name: 'Paglia').take!
             
         ],
+        publisher: Publisher.find_by(name: 'Graywolf Press'),
         isbn_13: '978-1-891830-02-0',
         year_published: '2000',
         edition: 'After School Special',
@@ -92,6 +115,7 @@ books = [
         authors: [
             Author.where(first_name: 'Rainer', middle_name: 'Steel', last_name: 'Rilke').take!  
         ],
+        publisher: Publisher.find_by(name: 'McSweeney\'s'),
         isbn_13: '978-1-60309-398-9',
         year_published: '2022',
         edition: 'Book 2',
@@ -100,34 +124,3 @@ books = [
 ]
 
 Book.create(books)
-
-# publishers
-
-publishers = [
-    {
-        name: 'Paste Magazine',
-        books: [
-            Book.find_by(title: 'American Elf')
-        ]
-    },
-    {
-        name: 'Publishers Weekly',
-        books: [
-            Book.find_by(title: 'Cosmoknights')
-        ]
-    },
-    {
-        name: 'Graywolf Press',
-        books: [
-            Book.find_by(title: 'Essex County'),
-            Book.find_by(title: 'Hey, Mister (Vol 1)')
-        ]
-    },
-    {
-        name: 'McSweeney\'s',
-        books: [
-            Book.find_by(title: 'The Underwater Welder')
-        ]
-    }
-]
-Publisher.create(publishers)

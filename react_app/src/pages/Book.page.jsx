@@ -34,7 +34,7 @@ function Book() {
 
   useEffect(()=>{
     getBookData();
-  },[]);
+  },[isbn]);
 
   return (
     <Container>
@@ -58,7 +58,8 @@ function Book() {
                     <ListGroup.Item>
                       <h4>by {authors}</h4>
                     </ListGroup.Item>
-                    <ListGroup.Item></ListGroup.Item>
+                  </ListGroup>
+                  <ListGroup>
                     <ListGroup.Item><h6>Edition: {bookData.edition}</h6></ListGroup.Item>
                     <ListGroup.Item><h6>Price: {bookData.price}</h6></ListGroup.Item>
                     <ListGroup.Item><h6>ISBN: {bookData.isbn_13}</h6></ListGroup.Item>

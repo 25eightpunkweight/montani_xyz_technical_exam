@@ -38,7 +38,7 @@ export const isValidISBN10 = (isbn10Digit) => {
     return total % 11 == 0;
 }
 
-export const convert = (isbn) => {
+export const isbnConvert = (isbn) => {
     let total = 0;
     if(isValidISBN10(isbn)){ //input is a valid ISBN-10 and we want to convert it to ISBN-13
         isbn = ('978-' + isbn.slice(0, -2)) //prepend 978- then remove the last digit

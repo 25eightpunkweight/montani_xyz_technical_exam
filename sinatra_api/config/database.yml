@@ -1,7 +1,8 @@
 default: &default
   adapter: postgresql
   encoding: unicode
-  host: localhost
+  # host: localhost # for non-docker
+  host: db # for docker container
   username: postgres
   password: postgres
   pool: 5

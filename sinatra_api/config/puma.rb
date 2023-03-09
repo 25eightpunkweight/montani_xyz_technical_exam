@@ -9,14 +9,14 @@ shared_dir = "#{app_dir}/tmp"
 
 # preload_app!
 
-rackup      DefaultRackup
+# rackup      DefaultRackup
 port        ENV['PORT']     || 55755
 environment rack_env
 
 # only bind a sock if it's an app meant to be served via apache.
 # bind "unix://#{shared_dir}/sockets/puma.sock"
 
-if rack_env == 'development'
+if rack_env == 'production'
   stdout_redirect "#{app_dir}/log/puma.stdout.log", "#{app_dir}/log/puma.stderr.log", true
 end
 
